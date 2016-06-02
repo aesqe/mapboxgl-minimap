@@ -1,4 +1,4 @@
-# Ractive Minimap Control
+# Mapbox GL Minimap Control
 
 [Demo on GitHub pages](http://aesqe.github.io/mapboxgl-minimap/)
 
