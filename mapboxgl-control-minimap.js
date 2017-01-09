@@ -24,7 +24,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		zoom: 6,
 
 		// should be a function; will be bound to Minimap
-		zoomAdjust: null, 
+		zoomAdjust: null,
 
 		// if parent map zoom >= 18 and minimap zoom >= 14, set minimap zoom to 16
 		zoomLevels: [
@@ -34,7 +34,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 			[12, 8, 10],
 			[10, 6, 8]
 		],
-		
+
 		bounds: "parent",
 
 		lineColor: "#08F",
@@ -78,7 +78,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		var parentMap = this._parentMap;
 		var miniMap = this._miniMap;
 		var interactions = [
-			"dragPan", "scrollZoom", "boxZoom", "dragRotate", 
+			"dragPan", "scrollZoom", "boxZoom", "dragRotate",
 			"keyboard", "doubleClickZoom", "touchZoomRotate"
 		];
 
@@ -170,7 +170,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 			this._isDragging = true;
 			this._previousPoint = this._currentPoint;
 			this._currentPoint = [e.lngLat.lng, e.lngLat.lat];
-		}                               
+		}
 	},
 
 	_mouseMove: function (e)
@@ -266,7 +266,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		}
 
 		var parentBounds = this._parentMap.getBounds();
-		
+
 		this._setTrackingRectBounds(parentBounds);
 
 		if( typeof this.options.zoomAdjust === "function" ) {
@@ -312,7 +312,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		var container = document.createElement("div");
 
 		container.className = "mapboxgl-ctrl-minimap";
-		container.style = "width: " + opts.width + "; height: " + opts.height + ";";
+		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
 
 		parentMap.getContainer().appendChild(container);
