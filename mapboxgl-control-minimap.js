@@ -312,8 +312,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		var container = document.createElement("div");
 
 		container.className = "mapboxgl-ctrl-minimap";
-		container.style.width = opts.width;
-		container.style.height = opts.height;
+		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
 
 		parentMap.getContainer().appendChild(container);
