@@ -16,7 +16,6 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 
 	options: {
 		id: "mapboxgl-minimap",
-		position: "bottom-left",
 		width: "320px",
 		height: "180px",
 		style: "mapbox://styles/mapbox/streets-v8",
@@ -306,8 +305,6 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		container.className = "mapboxgl-ctrl-minimap";
 		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
-
-		parentMap.getContainer().appendChild(container);
 
 		if( opts.id !== "" ) {
 			container.id = opts.id;
