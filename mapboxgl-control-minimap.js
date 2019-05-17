@@ -67,6 +67,8 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 			center: opts.center
 		});
 
+		if (opts.maxBounds) mapboxgl.setMaxBounds(opts.maxBounds);
+		
 		miniMap.on("load", this._load.bind(this));
 
 		return this._container;
