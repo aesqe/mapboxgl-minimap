@@ -15,7 +15,7 @@ var map = new mapboxgl.Map({
 });
 
 map.on("style.load", function () {
-	map.addControl(new mapboxgl.Minimap());
+	map.addControl(new mapboxgl.Minimap(), 'top-right'); // Possible values are bottom-left, bottom-right, top-left, top-right
 });
 ```
 
@@ -28,22 +28,22 @@ Options:
 	id: "mapboxgl-minimap",
 	position: "bottom-left",
 	width: "320px",
-	height: "181px",
+	height: "180px",
 	style: "mapbox://styles/mapbox/streets-v8",
 	center: [0, 0],
-
 	zoom: 6,
-	zoomAdjust: null, // should be a function; will be bound to Minimap
+
+	// should be a function; will be bound to Minimap
+	zoomAdjust: null,
+
+	// if parent map zoom >= 18 and minimap zoom >= 14, set minimap zoom to 16
 	zoomLevels: [
-		// if parent map zoom >= 18 and minimap zoom >= 14, set minimap zoom to 16
 		[18, 14, 16],
 		[16, 12, 14],
 		[14, 10, 12],
 		[12, 8, 10],
 		[10, 6, 8]
 	],
-
-	maxBounds: null, // Do not set or set as https://docs.mapbox.com/mapbox-gl-js/api/#lnglatboundslike
 
 	lineColor: "#08F",
 	lineWidth: 1,
@@ -53,6 +53,11 @@ Options:
 	fillOpacity: 0.25,
 
 	dragPan: false,
-	scrollZoom: false
+	scrollZoom: false,
+	boxZoom: false,
+	dragRotate: false,
+	keyboard: false,
+	doubleClickZoom: false,
+	touchZoomRotate: false
 }
 ```
