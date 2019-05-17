@@ -1,6 +1,6 @@
 function Minimap ( options )
 {
-	mapboxgl.util.setOptions(this, options);
+	Object.assign(this.options, options);
 
 	this._ticking = false;
 	this._lastMouseMoveEvent = null;
@@ -12,7 +12,7 @@ function Minimap ( options )
 	this._trackingRectCoordinates = [[[], [], [], [], []]];
 }
 
-Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
+Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 
 	options: {
 		id: "mapboxgl-minimap",
