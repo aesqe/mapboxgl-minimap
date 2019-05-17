@@ -1,10 +1,11 @@
 # Mapbox GL Minimap Control
 
+## Demo
 [Demo on GitHub pages](http://aesqe.github.io/mapboxgl-minimap/)
 
 **--- work in progress; overall performance can probably be improved ---**
 
----
+## How to use it
 
 ```javascript
 var map = new mapboxgl.Map({
@@ -19,14 +20,11 @@ map.on("style.load", function () {
 });
 ```
 
----
-
-Options:
+## Options
 
 ```javascript
 {
 	id: "mapboxgl-minimap",
-	position: "bottom-left",
 	width: "320px",
 	height: "180px",
 	style: "mapbox://styles/mapbox/streets-v8",
@@ -61,3 +59,7 @@ Options:
 	touchZoomRotate: false
 }
 ```
+
+## Compatibility
+
+The latest version should be compatible with maboxgl 0.54.0
