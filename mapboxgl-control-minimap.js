@@ -306,6 +306,8 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
 
+		parentMap.getContainer().appendChild(container);
+
 		if( opts.id !== "" ) {
 			container.id = opts.id;
 		}
