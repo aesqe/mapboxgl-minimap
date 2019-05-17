@@ -19,11 +19,15 @@
 			container: "map",
 			style: "mapbox://styles/mapbox/streets-v8",
 			center: [-73.94656812952897, 40.72912351406106],
-			zoom: 7
+			zoom: 10
 		});
 
 		map.on("load", function () {
-			map.addControl(new mapboxgl.Minimap());
+			map.addControl(new mapboxgl.Minimap({
+        center: [-73.94656812952897, 40.72912351406106],
+        zoom: 6,
+        zoomLevels: [],
+      }));
 		});
 
 	</script>
