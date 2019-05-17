@@ -35,8 +35,6 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 			[10, 6, 8]
 		],
 
-		bounds: "parent",
-
 		lineColor: "#08F",
 		lineWidth: 1,
 		lineOpacity: 1,
@@ -68,7 +66,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		});
 
 		if (opts.maxBounds) mapboxgl.setMaxBounds(opts.maxBounds);
-		
+
 		miniMap.on("load", this._load.bind(this));
 
 		return this._container;
@@ -94,14 +92,6 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 			this.options.zoomAdjust = opts.zoomAdjust.bind(this);
 		} else if( opts.zoomAdjust === null ) {
 			this.options.zoomAdjust = this._zoomAdjust.bind(this);
-		}
-
-		if( opts.bounds === "parent" ) {
-			opts.bounds = parentMap.getBounds();
-		}
-
-		if( typeof opts.bounds === "object" ) {
-			miniMap.fitBounds(opts.bounds, {duration: 50});
 		}
 
 		var bounds = miniMap.getBounds();

@@ -42,8 +42,8 @@ Options:
 		[12, 8, 10],
 		[10, 6, 8]
 	],
-	
-	bounds: "parent", // or a valid lngLat object/array
+
+	maxBounds: null, // Do not set or set as https://docs.mapbox.com/mapbox-gl-js/api/#lnglatboundslike
 
 	lineColor: "#08F",
 	lineWidth: 1,
