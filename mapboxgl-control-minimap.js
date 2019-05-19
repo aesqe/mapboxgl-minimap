@@ -142,11 +142,11 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		parentMap.on("move", this._update.bind(this));
 
 		miniMap.on("mousemove", this._mouseMove.bind(this));
-		miniMap.on("mousedown", this._mouseDown.bind(this), true);
+		miniMap.on("mousedown", this._mouseDown.bind(this));
 		miniMap.on("mouseup", this._mouseUp.bind(this));
 
 		miniMap.on("touchmove", this._mouseMove.bind(this));
-		miniMap.on("touchstart", this._mouseDown.bind(this), true);
+		miniMap.on("touchstart", this._mouseDown.bind(this));
 		miniMap.on("touchend", this._mouseUp.bind(this));
 
 		this._miniMapCanvas = miniMap.getCanvasContainer();
