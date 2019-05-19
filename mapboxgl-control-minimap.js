@@ -1,6 +1,6 @@
 function Minimap ( options )
 {
-	mapboxgl.util.setOptions(this, options);
+	Object.assign(this.options, options);
 
 	this._ticking = false;
 	this._lastMouseMoveEvent = null;
@@ -12,11 +12,10 @@ function Minimap ( options )
 	this._trackingRectCoordinates = [[[], [], [], [], []]];
 }
 
-Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
+Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 
 	options: {
 		id: "mapboxgl-minimap",
-		position: "bottom-left",
 		width: "320px",
 		height: "180px",
 		style: "mapbox://styles/mapbox/streets-v8",
@@ -34,8 +33,6 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 			[12, 8, 10],
 			[10, 6, 8]
 		],
-
-		bounds: "parent",
 
 		lineColor: "#08F",
 		lineWidth: 1,
@@ -67,6 +64,8 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 			center: opts.center
 		});
 
+		if (opts.maxBounds) miniMap.setMaxBounds(opts.maxBounds);
+
 		miniMap.on("load", this._load.bind(this));
 
 		return this._container;
@@ -92,14 +91,6 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 			this.options.zoomAdjust = opts.zoomAdjust.bind(this);
 		} else if( opts.zoomAdjust === null ) {
 			this.options.zoomAdjust = this._zoomAdjust.bind(this);
-		}
-
-		if( opts.bounds === "parent" ) {
-			opts.bounds = parentMap.getBounds();
-		}
-
-		if( typeof opts.bounds === "object" ) {
-			miniMap.fitBounds(opts.bounds, {duration: 50});
 		}
 
 		var bounds = miniMap.getBounds();
@@ -151,11 +142,11 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		parentMap.on("move", this._update.bind(this));
 
 		miniMap.on("mousemove", this._mouseMove.bind(this));
-		miniMap.on("mousedown", this._mouseDown.bind(this), true);
+		miniMap.on("mousedown", this._mouseDown.bind(this));
 		miniMap.on("mouseup", this._mouseUp.bind(this));
 
 		miniMap.on("touchmove", this._mouseMove.bind(this));
-		miniMap.on("touchstart", this._mouseDown.bind(this), true);
+		miniMap.on("touchstart", this._mouseDown.bind(this));
 		miniMap.on("touchend", this._mouseUp.bind(this));
 
 		this._miniMapCanvas = miniMap.getCanvasContainer();
@@ -311,7 +302,7 @@ Minimap.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
 		var opts = this.options;
 		var container = document.createElement("div");
 
-		container.className = "mapboxgl-ctrl-minimap";
+		container.className = "mapboxgl-ctrl-minimap mapboxgl-ctrl";
 		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
 
