@@ -302,7 +302,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		var opts = this.options;
 		var container = document.createElement("div");
 
-		container.className = "mapboxgl-ctrl-minimap";
+		container.className = "mapboxgl-ctrl-minimap mapboxgl-ctrl";
 		container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
 		container.addEventListener("contextmenu", this._preventDefault);
 
