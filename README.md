@@ -16,7 +16,8 @@ var map = new mapboxgl.Map({
 });
 
 map.on("style.load", function () {
-	map.addControl(new mapboxgl.Minimap(), 'top-right'); // Possible values are bottom-left, bottom-right, top-left, top-right
+	// Possible position values are 'bottom-left', 'bottom-right', 'top-left', 'top-right'
+	map.addControl(new mapboxgl.Minimap(), 'top-right');
 });
 ```
 
