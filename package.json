@@ -1,0 +1,24 @@
+{
+    "name": "@aesqe/mapboxgl-minimap",
+    "version": "1.0.0",
+    "description": "Mapbox GL Minimap Control",
+    "main": "mapboxgl-control-minimap.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aesqe/mapboxgl-minimap.git"
+    },
+    "keywords": [
+        "mapbox",
+        "mapboxgl",
+        "minimap"
+    ],
+    "author": "aesqe",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/aesqe/mapboxgl-minimap/issues"
+    },
+    "homepage": "https://github.com/aesqe/mapboxgl-minimap#readme"
+}
