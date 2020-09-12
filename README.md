@@ -1,5 +1,7 @@
 # Mapbox GL Minimap Control
 
+![npm (scoped)](https://img.shields.io/npm/v/@aesqe/mapboxgl-minimap)
+
 ## Demo
 [Demo on GitHub pages](http://aesqe.github.io/mapboxgl-minimap/)
 
