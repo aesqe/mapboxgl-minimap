@@ -5,6 +5,8 @@ function Minimap ( options )
 	this._ticking = false;
 	this._lastMouseMoveEvent = null;
 	this._parentMap = null;
+	this._container = null;
+	this._updateListener = null;
 	this._isDragging = false;
 	this._isCursorOverFeature = false;
 	this._previousPoint = [0, 0];
@@ -69,6 +71,18 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		miniMap.on("load", this._load.bind(this));
 
 		return this._container;
+	},
+
+	onRemove: function()
+	{
+		if (this._container) {
+			this._container.parentNode.removeChild(this._container);
+			this._parentMap.off("move", this._updateListener);
+
+			this._parentMap = null;
+			this._container = null;
+			this._updateListener = null;
+	    }
 	},
 
 	_load: function ()
@@ -139,7 +153,8 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 
 		this._update();
 
-		parentMap.on("move", this._update.bind(this));
+		this._updateListener = this._update.bind(this);
+		parentMap.on("move", this._updateListener);
 
 		miniMap.on("mousemove", this._mouseMove.bind(this));
 		miniMap.on("mousedown", this._mouseDown.bind(this));
